@@ -1,6 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
 
+// KODECAMP_TASK_3
 
 // C# Loops and Methods - Solutions Guide
 // Question 1: Choosing the Right Loop (20 Points)
@@ -37,22 +37,39 @@ Console.WriteLine("Hello, World!");
 
 
 
-//C. PrintApplicationHeader Method
-
+// C. PrintApplicationHeader Method and Main method implementation
 partial class Program
 {
-    public static void PrintApplicationHeader()
-    {
-        Console.WriteLine("=== PrintApplicationHeader Method ===");
-        Console.WriteLine("======================");
-    }
-
     public static void Main(string[] args)
     {
         PrintApplicationHeader();
         PrintApplicationHeader();
+        
+        // Question 3: Countdown loop
+        int counter = 5;
+        
+        while (counter >= 1)
+        {
+            Console.WriteLine(counter);
+            counter--;
+        }
+        
+        Console.WriteLine("Loop finished!");
+    }
+
+    public static void PrintApplicationHeader()
+    {
+        Console.WriteLine("=== My Awesome App ===");
+        Console.WriteLine("======================");
     }
 }
+
+// Question 3 Explanation:
+// We start with counter = 5
+// The while condition counter >= 1 means "keep going as long as counter is 1 or greater"
+// Inside the loop, we print the current counter value
+// Then we decrease counter by 1 using counter--
+// When counter becomes 0, the condition becomes false and the loop stops
 
 
 
