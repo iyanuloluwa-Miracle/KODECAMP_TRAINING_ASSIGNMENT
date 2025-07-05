@@ -25,3 +25,34 @@ Console.WriteLine("Hello, World!");
 // Do-while loop: Checks the condition AFTER executing the loop body. This guarantees the loop body runs at least once, even if the condition is false initially.
 
 
+// Question 2: Introduction to Methods (20 Points)
+// A. What is a "Method" (or "Function") in C# programming?
+
+// A method is a block of code that performs a specific task. It can take inputs (called parameters) and can return a value. Methods help organize code, making it reusable and easier to read. You can think of a method as a mini-program within your program that you can call whenever you need to perform that task.
+
+
+
+// B. DRY Principle and Methods
+// The DRY principle stands for "Don't Repeat Yourself." It means you should avoid writing the same code in multiple places. Methods help follow this principle by letting you write code once and reuse it whenever needed. Instead of copying and pasting the same code, you create a method and call it from different places.
+
+
+
+//C. PrintApplicationHeader Method
+
+partial class Program
+{
+    public static void PrintApplicationHeader()
+    {
+        Console.WriteLine("=== PrintApplicationHeader Method ===");
+        Console.WriteLine("======================");
+    }
+
+    public static void Main(string[] args)
+    {
+        PrintApplicationHeader();
+        PrintApplicationHeader();
+    }
+}
+
+
+
