@@ -9,7 +9,6 @@ namespace SchoolManagement.Models
         public string FullName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public DateTime HireDate { get; set; }
 
         public List<Course> Courses { get; set; } = new List<Course>();
     }
