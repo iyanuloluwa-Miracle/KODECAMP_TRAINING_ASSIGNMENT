@@ -1,0 +1,73 @@
+# .gitignore for C# Projects
+
+# Visual Studio / .NET build output
+bin/
+obj/
+*.suo
+*.user
+*.sln.docstates
+
+# NuGet Packages
+packages/
+*.nupkg
+
+# Project-specific files
+/App_Data/
+Properties/
+TestResults/
+
+# Build artifacts
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+
+# Visual Studio cache files
+.vs/
+*.vsidx
+
+# User-specific files
+*.sdf
+*.opensdf
+*.tlog
+*.log
+
+# Environment-specific files
+*.config
+appsettings*.json
+
+# Runtime data
+*.pid
+*.seed
+*.cache
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+*.csproj.user
+*.csproj.ide
+*.sln.ide
+
+# Test artifacts
+TestResults/
+
+# Unity-specific (if applicable)
+[Tt]emp/
+[Ll]ibrary/
+[Aa]ssets/[Ss]treamingAssets/
+[Aa]ssets/[Rr]eferences/
+
+# Package lock files (if using npm or similar in a hybrid project)
+package-lock.json
+
+# Ignore macOS-specific files
+*.swp
+
+# Ignore sensitive files (customize as needed)
+secrets.json
+*.p12
+*.pfx
