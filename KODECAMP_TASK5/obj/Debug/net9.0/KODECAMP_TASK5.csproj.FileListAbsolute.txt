@@ -1,0 +1,15 @@
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\bin\Debug\net9.0\KODECAMP_TASK5.exe
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\bin\Debug\net9.0\KODECAMP_TASK5.deps.json
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\bin\Debug\net9.0\KODECAMP_TASK5.runtimeconfig.json
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\bin\Debug\net9.0\KODECAMP_TASK5.dll
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\bin\Debug\net9.0\KODECAMP_TASK5.pdb
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\obj\Debug\net9.0\KODECAMP_TASK5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\obj\Debug\net9.0\KODECAMP_TASK5.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\obj\Debug\net9.0\KODECAMP_TASK5.AssemblyInfo.cs
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\obj\Debug\net9.0\KODECAMP_TASK5.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\obj\Debug\net9.0\KODECAMP_TASK5.sourcelink.json
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\obj\Debug\net9.0\KODECAMP_TASK5.dll
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\obj\Debug\net9.0\refint\KODECAMP_TASK5.dll
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\obj\Debug\net9.0\KODECAMP_TASK5.pdb
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\obj\Debug\net9.0\KODECAMP_TASK5.genruntimeconfig.cache
+C:\Users\User\Desktop\KODECAMP TASKS\KODECAMP_TASK5\obj\Debug\net9.0\ref\KODECAMP_TASK5.dll
