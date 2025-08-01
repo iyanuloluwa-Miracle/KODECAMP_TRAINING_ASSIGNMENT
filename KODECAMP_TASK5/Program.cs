@@ -2,7 +2,6 @@
 
 class BankAccount
 {
-    // Properties to store account info
     public string AccountNumber;
     public string AccountHolder;
     public decimal Balance;
@@ -60,10 +59,9 @@ class Program
     {
         BankAccount myAccount = new BankAccount("12345", "Dina Iyanuloluwa", 0);
 
-        // Keep showing menu until user exits
+
         while (true)
         {
-            // Show the menu
             Console.WriteLine("\nWelcome to Simple Bank!");
             Console.WriteLine("1. Deposit Money");
             Console.WriteLine("2. Withdraw Money");
@@ -71,23 +69,20 @@ class Program
             Console.WriteLine("4. Exit");
             Console.Write("Pick a number (1-4): ");
 
-            // Get user choice
             string choice = Console.ReadLine();
 
-            // Exit if user picks 4
             if (choice == "4")
             {
                 Console.WriteLine("Bye! Thanks for using Simple Bank!");
-                break; // Stops the loop
+                break; 
             }
 
-            // Handle other choices
-            if (choice == "1") // Deposit
+            if (choice == "1") 
             {
                 Console.Write("How much to deposit? ");
                 string amountInput = Console.ReadLine();
                 decimal amount;
-                if (decimal.TryParse(amountInput, out amount)) // Check if input is a number
+                if (decimal.TryParse(amountInput, out amount))
                 {
                     myAccount.Deposit(amount);
                 }
@@ -96,12 +91,12 @@ class Program
                     Console.WriteLine("That’s not a valid number!");
                 }
             }
-            else if (choice == "2") // Withdraw
+            else if (choice == "2")
             {
                 Console.Write("How much to withdraw? ");
                 string amountInput = Console.ReadLine();
                 decimal amount;
-                if (decimal.TryParse(amountInput, out amount)) // Check if input is a number
+                if (decimal.TryParse(amountInput, out amount))
                 {
                     myAccount.Withdraw(amount);
                 }
@@ -110,11 +105,11 @@ class Program
                     Console.WriteLine("That’s not a valid number!");
                 }
             }
-            else if (choice == "3") // Check Balance
+            else if (choice == "3")
             {
                 myAccount.CheckBalance();
             }
-            else // Invalid choice
+            else
             {
                 Console.WriteLine("Please pick a number between 1 and 4!");
             }
