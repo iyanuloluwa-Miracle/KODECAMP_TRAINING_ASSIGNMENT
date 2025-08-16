@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\KODECAMP_TASK3\\KODECAMP_TASK_4\\KODECAMP_TASK_4\\KODECAMP_TASK_4.csproj": {}
+    "C:\\Users\\User\\Desktop\\KODECAMP TASKS\\KODECAMP_TASK_4\\KODECAMP_TASK_4\\KODECAMP_TASK_4.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\KODECAMP_TASK3\\KODECAMP_TASK_4\\KODECAMP_TASK_4\\KODECAMP_TASK_4.csproj": {
+    "C:\\Users\\User\\Desktop\\KODECAMP TASKS\\KODECAMP_TASK_4\\KODECAMP_TASK_4\\KODECAMP_TASK_4.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\KODECAMP_TASK3\\KODECAMP_TASK_4\\KODECAMP_TASK_4\\KODECAMP_TASK_4.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\KODECAMP TASKS\\KODECAMP_TASK_4\\KODECAMP_TASK_4\\KODECAMP_TASK_4.csproj",
         "projectName": "KODECAMP_TASK_4",
-        "projectPath": "C:\\Users\\User\\Desktop\\KODECAMP_TASK3\\KODECAMP_TASK_4\\KODECAMP_TASK_4\\KODECAMP_TASK_4.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\KODECAMP TASKS\\KODECAMP_TASK_4\\KODECAMP_TASK_4\\KODECAMP_TASK_4.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\KODECAMP_TASK3\\KODECAMP_TASK_4\\KODECAMP_TASK_4\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\KODECAMP TASKS\\KODECAMP_TASK_4\\KODECAMP_TASK_4\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -43,6 +43,18 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

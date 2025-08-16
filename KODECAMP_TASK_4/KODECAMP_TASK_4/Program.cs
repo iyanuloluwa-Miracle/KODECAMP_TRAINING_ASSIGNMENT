@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using SchoolManagement.Models;
 
+using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using SchoolManagement.Data;
+using SchoolManagement.Models;
+
 class Program
 {
     static void Main(string[] args)
@@ -83,5 +89,16 @@ class Program
             Console.WriteLine($" - {enrollment.Course.Title} ({enrollment.Course.Description})");
             Console.WriteLine($"   Taught by: {enrollment.Course.Teacher.FullName} | Grade: {enrollment.Grade}");
         }
+        
+        var builder = WebApplication.CreateBuilder(args);
+
+        // Configure EF Core with SQL Server
+        builder.Services.AddDbContext<SchoolDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+        var app = builder.Build();
+
+        // ...existing code...
+        app.Run();
     }
 }
