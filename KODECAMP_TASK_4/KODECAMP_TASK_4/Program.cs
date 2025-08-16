@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using SchoolManagement.Models;
-
-using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Data;
-using SchoolManagement.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 class Program
 {
@@ -29,7 +28,7 @@ class Program
             Id = 1,
             Title = "Engineering 101",
             Description = "Introduction to Mechanical Engineering",
-            Teacher = teacher
+            Teacher = teacher,
         };
 
         var geometry = new Course
@@ -94,7 +93,7 @@ class Program
 
         // Configure EF Core with SQL Server
         builder.Services.AddDbContext<SchoolDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
         var app = builder.Build();
 
