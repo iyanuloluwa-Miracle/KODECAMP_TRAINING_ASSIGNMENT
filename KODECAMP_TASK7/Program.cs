@@ -1,5 +1,9 @@
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAuthorization();
+builder.Services.AddDbContext<SchoolManagement.Data.SchoolDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -28,6 +32,7 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
+builder.Services.AddControllers();
 builder.Services.AddScoped<KODECAMP_TASK7.Services.AuthService>();
 builder.Services.AddScoped<KODECAMP_TASK7.Services.StudentService>();
 builder.Services.AddScoped<KODECAMP_TASK7.Services.TeacherService>();
@@ -47,10 +52,6 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.Run();
+app.MapControllers();
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
