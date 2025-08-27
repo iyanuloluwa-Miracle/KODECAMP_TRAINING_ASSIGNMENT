@@ -31,7 +31,20 @@ class Program
         builder.Services.AddDbContext<SchoolDbContext>(options =>
             options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
+        // Add controllers
+        builder.Services.AddControllers();
+
+        // Add JWT authentication
+        SchoolManagement.Controllers.JwtAuthenticationExtensions.AddJwtAuthentication(builder.Services, builder.Configuration);
+
         var app = builder.Build();
+
+        // Use authentication and authorization
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        // Map controllers
+        app.MapControllers();
 
         app.Run();
     }
