@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Data;
 using SchoolManagement.Models;
 using KODECAMP_TASK7.Services;
+using KODECAMP_TASK7.DTOs;
 using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolManagement.Controllers
@@ -21,7 +22,15 @@ namespace SchoolManagement.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var students = _studentService.GetAll();
+            var students = _studentService.GetAll()
+                .Select(s => new StudentDto {
+                    Id = s.Id,
+                    FullName = s.FullName,
+                    Email = s.Email,
+                    PhoneNumber = s.PhoneNumber,
+                    Gender = s.Gender,
+                    DateOfBirth = s.DateOfBirth
+                });
             return Ok(students);
         }
 
@@ -29,22 +38,42 @@ namespace SchoolManagement.Controllers
         public IActionResult Get(int id)
         {
             var student = _studentService.GetById(id);
-            if (student == null) return NotFound();
-            return Ok(student);
+            if (student == null) return NotFound(new { message = "Student not found" });
+            var dto = new StudentDto {
+                Id = student.Id,
+                FullName = student.FullName,
+                Email = student.Email,
+                PhoneNumber = student.PhoneNumber,
+                Gender = student.Gender,
+                DateOfBirth = student.DateOfBirth
+            };
+            return Ok(dto);
         }
 
         [HttpPost]
         public IActionResult Create([FromBody] Student student)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var created = _studentService.Create(student);
-            return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
+            var dto = new StudentDto {
+                Id = created.Id,
+                FullName = created.FullName,
+                Email = created.Email,
+                PhoneNumber = created.PhoneNumber,
+                Gender = created.Gender,
+                DateOfBirth = created.DateOfBirth
+            };
+            return CreatedAtAction(nameof(Get), new { id = dto.Id }, dto);
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] Student student)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var updated = _studentService.Update(id, student);
-            if (!updated) return NotFound();
+            if (!updated) return NotFound(new { message = "Student not found" });
             return NoContent();
         }
 
@@ -52,7 +81,7 @@ namespace SchoolManagement.Controllers
         public IActionResult Delete(int id)
         {
             var deleted = _studentService.Delete(id);
-            if (!deleted) return NotFound();
+            if (!deleted) return NotFound(new { message = "Student not found" });
             return NoContent();
         }
     }

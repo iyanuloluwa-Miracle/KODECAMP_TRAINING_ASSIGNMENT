@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Data;
 using SchoolManagement.Models;
 using KODECAMP_TASK7.Services;
+using KODECAMP_TASK7.DTOs;
 using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolManagement.Controllers
@@ -21,7 +22,14 @@ namespace SchoolManagement.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var enrollments = _enrollmentService.GetAll();
+            var enrollments = _enrollmentService.GetAll()
+                .Select(e => new EnrollmentDto {
+                    Id = e.Id,
+                    StudentId = e.Student?.Id ?? e.StudentId,
+                    CourseId = e.Course?.Id ?? e.CourseId,
+                    EnrollDate = e.EnrollDate,
+                    Grade = e.Grade
+                });
             return Ok(enrollments);
         }
 
@@ -29,22 +37,40 @@ namespace SchoolManagement.Controllers
         public IActionResult Get(int id)
         {
             var enrollment = _enrollmentService.GetById(id);
-            if (enrollment == null) return NotFound();
-            return Ok(enrollment);
+            if (enrollment == null) return NotFound(new { message = "Enrollment not found" });
+            var dto = new EnrollmentDto {
+                Id = enrollment.Id,
+                StudentId = enrollment.Student?.Id ?? enrollment.StudentId,
+                CourseId = enrollment.Course?.Id ?? enrollment.CourseId,
+                EnrollDate = enrollment.EnrollDate,
+                Grade = enrollment.Grade
+            };
+            return Ok(dto);
         }
 
         [HttpPost]
         public IActionResult Create([FromBody] Enrollment enrollment)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var created = _enrollmentService.Create(enrollment);
-            return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
+            var dto = new EnrollmentDto {
+                Id = created.Id,
+                StudentId = created.Student?.Id ?? created.StudentId,
+                CourseId = created.Course?.Id ?? created.CourseId,
+                EnrollDate = created.EnrollDate,
+                Grade = created.Grade
+            };
+            return CreatedAtAction(nameof(Get), new { id = dto.Id }, dto);
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] Enrollment enrollment)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             var updated = _enrollmentService.Update(id, enrollment);
-            if (!updated) return NotFound();
+            if (!updated) return NotFound(new { message = "Enrollment not found" });
             return NoContent();
         }
 
@@ -52,7 +78,7 @@ namespace SchoolManagement.Controllers
         public IActionResult Delete(int id)
         {
             var deleted = _enrollmentService.Delete(id);
-            if (!deleted) return NotFound();
+            if (!deleted) return NotFound(new { message = "Enrollment not found" });
             return NoContent();
         }
     }
