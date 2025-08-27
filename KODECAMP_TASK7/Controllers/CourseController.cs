@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Data;
 using SchoolManagement.Models;
+using KODECAMP_TASK7.Services;
 using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolManagement.Controllers
@@ -11,54 +12,44 @@ namespace SchoolManagement.Controllers
     [Authorize]
     public class CourseController : ControllerBase
     {
-        private readonly SchoolDbContext _context;
-        public CourseController(SchoolDbContext context)
+        private readonly CourseService _courseService;
+        public CourseController(CourseService courseService)
         {
-            _context = context;
+            _courseService = courseService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
-            var courses = await _context.Courses.Include(c => c.Teacher).Include(c => c.Enrollments).ToListAsync();
-            return Ok(courses);
+            // TODO: Use _courseService to get all courses
+            return Ok();
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public IActionResult Get(int id)
         {
-            var course = await _context.Courses.Include(c => c.Teacher).Include(c => c.Enrollments).FirstOrDefaultAsync(c => c.Id == id);
-            if (course == null) return NotFound();
-            return Ok(course);
+            // TODO: Use _courseService to get course by id
+            return Ok();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Course course)
+        public IActionResult Create([FromBody] Course course)
         {
-            _context.Courses.Add(course);
-            await _context.SaveChangesAsync();
+            // TODO: Use _courseService to create course
             return CreatedAtAction(nameof(Get), new { id = course.Id }, course);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Course course)
+        public IActionResult Update(int id, [FromBody] Course course)
         {
-            var existing = await _context.Courses.FindAsync(id);
-            if (existing == null) return NotFound();
-            existing.Title = course.Title;
-            existing.Description = course.Description;
-            existing.Teacher = course.Teacher;
-            await _context.SaveChangesAsync();
+            // TODO: Use _courseService to update course
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var course = await _context.Courses.FindAsync(id);
-            if (course == null) return NotFound();
-            _context.Courses.Remove(course);
-            await _context.SaveChangesAsync();
+            // TODO: Use _courseService to delete course
             return NoContent();
         }
     }

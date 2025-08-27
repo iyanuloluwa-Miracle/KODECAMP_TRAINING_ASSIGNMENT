@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Data;
 using SchoolManagement.Models;
+using KODECAMP_TASK7.Services;
 using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolManagement.Controllers
@@ -11,55 +12,44 @@ namespace SchoolManagement.Controllers
     [Authorize]
     public class EnrollmentController : ControllerBase
     {
-        private readonly SchoolDbContext _context;
-        public EnrollmentController(SchoolDbContext context)
+        private readonly EnrollmentService _enrollmentService;
+        public EnrollmentController(EnrollmentService enrollmentService)
         {
-            _context = context;
+            _enrollmentService = enrollmentService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
-            var enrollments = await _context.Enrollments.Include(e => e.Student).Include(e => e.Course).ToListAsync();
-            return Ok(enrollments);
+            // TODO: Use _enrollmentService to get all enrollments
+            return Ok();
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public IActionResult Get(int id)
         {
-            var enrollment = await _context.Enrollments.Include(e => e.Student).Include(e => e.Course).FirstOrDefaultAsync(e => e.Id == id);
-            if (enrollment == null) return NotFound();
-            return Ok(enrollment);
+            // TODO: Use _enrollmentService to get enrollment by id
+            return Ok();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Enrollment enrollment)
+        public IActionResult Create([FromBody] Enrollment enrollment)
         {
-            _context.Enrollments.Add(enrollment);
-            await _context.SaveChangesAsync();
+            // TODO: Use _enrollmentService to create enrollment
             return CreatedAtAction(nameof(Get), new { id = enrollment.Id }, enrollment);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Enrollment enrollment)
+        public IActionResult Update(int id, [FromBody] Enrollment enrollment)
         {
-            var existing = await _context.Enrollments.FindAsync(id);
-            if (existing == null) return NotFound();
-            existing.EnrollDate = enrollment.EnrollDate;
-            existing.Grade = enrollment.Grade;
-            existing.Student = enrollment.Student;
-            existing.Course = enrollment.Course;
-            await _context.SaveChangesAsync();
+            // TODO: Use _enrollmentService to update enrollment
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var enrollment = await _context.Enrollments.FindAsync(id);
-            if (enrollment == null) return NotFound();
-            _context.Enrollments.Remove(enrollment);
-            await _context.SaveChangesAsync();
+            // TODO: Use _enrollmentService to delete enrollment
             return NoContent();
         }
     }

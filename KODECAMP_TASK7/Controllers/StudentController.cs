@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Data;
 using SchoolManagement.Models;
+using KODECAMP_TASK7.Services;
 using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolManagement.Controllers
@@ -11,56 +12,44 @@ namespace SchoolManagement.Controllers
     [Authorize]
     public class StudentController : ControllerBase
     {
-        private readonly SchoolDbContext _context;
-        public StudentController(SchoolDbContext context)
+        private readonly StudentService _studentService;
+        public StudentController(StudentService studentService)
         {
-            _context = context;
+            _studentService = studentService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
-            var students = await _context.Students.Include(s => s.Enrollments).ToListAsync();
-            return Ok(students);
+            // TODO: Use _studentService to get all students
+            return Ok();
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public IActionResult Get(int id)
         {
-            var student = await _context.Students.Include(s => s.Enrollments).FirstOrDefaultAsync(s => s.Id == id);
-            if (student == null) return NotFound();
-            return Ok(student);
+            // TODO: Use _studentService to get student by id
+            return Ok();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Student student)
+        public IActionResult Create([FromBody] Student student)
         {
-            _context.Students.Add(student);
-            await _context.SaveChangesAsync();
+            // TODO: Use _studentService to create student
             return CreatedAtAction(nameof(Get), new { id = student.Id }, student);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Student student)
+        public IActionResult Update(int id, [FromBody] Student student)
         {
-            var existing = await _context.Students.FindAsync(id);
-            if (existing == null) return NotFound();
-            existing.FullName = student.FullName;
-            existing.Email = student.Email;
-            existing.PhoneNumber = student.PhoneNumber;
-            existing.Gender = student.Gender;
-            existing.DateOfBirth = student.DateOfBirth;
-            await _context.SaveChangesAsync();
+            // TODO: Use _studentService to update student
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var student = await _context.Students.FindAsync(id);
-            if (student == null) return NotFound();
-            _context.Students.Remove(student);
-            await _context.SaveChangesAsync();
+            // TODO: Use _studentService to delete student
             return NoContent();
         }
     }

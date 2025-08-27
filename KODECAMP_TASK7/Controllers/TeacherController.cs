@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SchoolManagement.Data;
 using SchoolManagement.Models;
+using KODECAMP_TASK7.Services;
 using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolManagement.Controllers
@@ -11,54 +12,44 @@ namespace SchoolManagement.Controllers
     [Authorize]
     public class TeacherController : ControllerBase
     {
-        private readonly SchoolDbContext _context;
-        public TeacherController(SchoolDbContext context)
+        private readonly TeacherService _teacherService;
+        public TeacherController(TeacherService teacherService)
         {
-            _context = context;
+            _teacherService = teacherService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
-            var teachers = await _context.Teachers.Include(t => t.Courses).ToListAsync();
-            return Ok(teachers);
+            // TODO: Use _teacherService to get all teachers
+            return Ok();
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public IActionResult Get(int id)
         {
-            var teacher = await _context.Teachers.Include(t => t.Courses).FirstOrDefaultAsync(t => t.Id == id);
-            if (teacher == null) return NotFound();
-            return Ok(teacher);
+            // TODO: Use _teacherService to get teacher by id
+            return Ok();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Teacher teacher)
+        public IActionResult Create([FromBody] Teacher teacher)
         {
-            _context.Teachers.Add(teacher);
-            await _context.SaveChangesAsync();
+            // TODO: Use _teacherService to create teacher
             return CreatedAtAction(nameof(Get), new { id = teacher.Id }, teacher);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Teacher teacher)
+        public IActionResult Update(int id, [FromBody] Teacher teacher)
         {
-            var existing = await _context.Teachers.FindAsync(id);
-            if (existing == null) return NotFound();
-            existing.FullName = teacher.FullName;
-            existing.Email = teacher.Email;
-            existing.PhoneNumber = teacher.PhoneNumber;
-            await _context.SaveChangesAsync();
+            // TODO: Use _teacherService to update teacher
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var teacher = await _context.Teachers.FindAsync(id);
-            if (teacher == null) return NotFound();
-            _context.Teachers.Remove(teacher);
-            await _context.SaveChangesAsync();
+            // TODO: Use _teacherService to delete teacher
             return NoContent();
         }
     }
