@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KODECAMP_TASK5", "KODECAMP_TASK5\KODECAMP_TASK5.csproj", "{D73A91CD-5F94-448B-9AE0-2082F4EEFD1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KODECAMP_TASK7", "KODECAMP_TASK7\KODECAMP_TASK7.csproj", "{1BF804C5-2618-4E53-886F-80E2934AC2D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,18 @@ Global
 		{D73A91CD-5F94-448B-9AE0-2082F4EEFD1D}.Release|x64.Build.0 = Release|Any CPU
 		{D73A91CD-5F94-448B-9AE0-2082F4EEFD1D}.Release|x86.ActiveCfg = Release|Any CPU
 		{D73A91CD-5F94-448B-9AE0-2082F4EEFD1D}.Release|x86.Build.0 = Release|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Debug|x64.Build.0 = Debug|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Debug|x86.Build.0 = Debug|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Release|x64.ActiveCfg = Release|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Release|x64.Build.0 = Release|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Release|x86.ActiveCfg = Release|Any CPU
+		{1BF804C5-2618-4E53-886F-80E2934AC2D6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

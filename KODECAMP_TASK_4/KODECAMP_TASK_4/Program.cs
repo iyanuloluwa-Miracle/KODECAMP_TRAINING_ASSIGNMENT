@@ -11,7 +11,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Initialize school data
+        
         var (teacher, student, engineering, geometry) = SchoolInitializer.Initialize();
 
         // Output
@@ -27,7 +27,7 @@ class Program
 
         var builder = WebApplication.CreateBuilder(args);
 
-        // Configure EF Core with SQL Server
+        // Configure EF Core
         builder.Services.AddDbContext<SchoolDbContext>(options =>
             options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
