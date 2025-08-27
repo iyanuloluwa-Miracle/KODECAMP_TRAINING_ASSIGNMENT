@@ -21,35 +21,38 @@ namespace SchoolManagement.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            // TODO: Use _enrollmentService to get all enrollments
-            return Ok();
+            var enrollments = _enrollmentService.GetAll();
+            return Ok(enrollments);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            // TODO: Use _enrollmentService to get enrollment by id
-            return Ok();
+            var enrollment = _enrollmentService.GetById(id);
+            if (enrollment == null) return NotFound();
+            return Ok(enrollment);
         }
 
         [HttpPost]
         public IActionResult Create([FromBody] Enrollment enrollment)
         {
-            // TODO: Use _enrollmentService to create enrollment
-            return CreatedAtAction(nameof(Get), new { id = enrollment.Id }, enrollment);
+            var created = _enrollmentService.Create(enrollment);
+            return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] Enrollment enrollment)
         {
-            // TODO: Use _enrollmentService to update enrollment
+            var updated = _enrollmentService.Update(id, enrollment);
+            if (!updated) return NotFound();
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            // TODO: Use _enrollmentService to delete enrollment
+            var deleted = _enrollmentService.Delete(id);
+            if (!deleted) return NotFound();
             return NoContent();
         }
     }

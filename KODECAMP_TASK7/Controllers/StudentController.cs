@@ -21,35 +21,38 @@ namespace SchoolManagement.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            // TODO: Use _studentService to get all students
-            return Ok();
+            var students = _studentService.GetAll();
+            return Ok(students);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            // TODO: Use _studentService to get student by id
-            return Ok();
+            var student = _studentService.GetById(id);
+            if (student == null) return NotFound();
+            return Ok(student);
         }
 
         [HttpPost]
         public IActionResult Create([FromBody] Student student)
         {
-            // TODO: Use _studentService to create student
-            return CreatedAtAction(nameof(Get), new { id = student.Id }, student);
+            var created = _studentService.Create(student);
+            return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] Student student)
         {
-            // TODO: Use _studentService to update student
+            var updated = _studentService.Update(id, student);
+            if (!updated) return NotFound();
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            // TODO: Use _studentService to delete student
+            var deleted = _studentService.Delete(id);
+            if (!deleted) return NotFound();
             return NoContent();
         }
     }
