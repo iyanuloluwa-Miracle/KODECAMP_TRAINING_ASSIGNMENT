@@ -46,6 +46,19 @@ namespace SchoolManagement.Controllers
             return Ok(dto);
         }
 
+        /// <summary>
+        /// Creates a new teacher.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /api/teacher
+        ///     {
+        ///         "fullName": "Jane Doe",
+        ///         "email": "jane.doe@example.com",
+        ///         "phoneNumber": "08012345678"
+        ///     }
+        /// </remarks>
         [HttpPost]
         public IActionResult Create([FromBody] Teacher teacher)
         {

@@ -46,6 +46,23 @@ namespace SchoolManagement.Controllers
             return Ok(dto);
         }
 
+    /// <summary>
+    /// Creates a new course.
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    ///
+    ///     POST /api/course
+    ///     {
+    ///         "title": "Mathematics",
+    ///         "description": "Basic math course for beginners",
+    ///         "teacher": {
+    ///             "fullName": "Jane Doe",
+    ///             "email": "jane.doe@example.com",
+    ///             "phoneNumber": "08012345678"
+    ///         }
+    ///     }
+    /// </remarks>
         [HttpPost]
         public IActionResult Create([FromBody] Course course)
         {

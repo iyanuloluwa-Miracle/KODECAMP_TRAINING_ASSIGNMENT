@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KODECAMP_TASK7")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b06dc273f7a32b7ce4227f52a4a5d1e61101079")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f01e41729b0225f456631efb291653fed16494e")]
 [assembly: System.Reflection.AssemblyProductAttribute("KODECAMP_TASK7")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KODECAMP_TASK7")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

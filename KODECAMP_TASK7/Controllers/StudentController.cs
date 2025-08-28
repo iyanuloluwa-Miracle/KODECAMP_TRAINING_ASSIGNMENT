@@ -50,6 +50,21 @@ namespace SchoolManagement.Controllers
             return Ok(dto);
         }
 
+        /// <summary>
+        /// Creates a new student.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /api/student
+        ///     {
+        ///         "fullName": "John Smith",
+        ///         "email": "john.smith@example.com",
+        ///         "phoneNumber": "08087654321",
+        ///         "gender": "Male",
+        ///         "dateOfBirth": "2010-05-15T00:00:00.000Z"
+        ///     }
+        /// </remarks>
         [HttpPost]
         public IActionResult Create([FromBody] Student student)
         {

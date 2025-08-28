@@ -48,6 +48,20 @@ namespace SchoolManagement.Controllers
             return Ok(dto);
         }
 
+        /// <summary>
+        /// Creates a new enrollment.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /api/enrollment
+        ///     {
+        ///         "studentId": 1,
+        ///         "courseId": 1,
+        ///         "enrollDate": "2025-08-28T06:14:44.324Z",
+        ///         "grade": "A"
+        ///     }
+        /// </remarks>
         [HttpPost]
         public IActionResult Create([FromBody] Enrollment enrollment)
         {
